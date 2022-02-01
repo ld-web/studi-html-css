@@ -1,5 +1,25 @@
 # STUDI - HTML/CSS
 
+- [Introduction](#introduction)
+  - [La communication client / serveur](#la-communication-client--serveur)
+  - [Le contenu HTML](#le-contenu-html)
+  - [Votre premier fichier HTML](#votre-premier-fichier-html)
+- [Structure des balises HTML](#structure-des-balises-html)
+  - [Balises doubles](#balises-doubles)
+  - [Balises simples (ou auto-fermantes)](#balises-simples-ou-auto-fermantes)
+  - [Attributs](#attributs)
+- [L'inspecteur d'éléments](#linspecteur-déléments)
+- [Le cache du navigateur](#le-cache-du-navigateur)
+- [Les balises head et body](#les-balises-head-et-body)
+- [Les balises de titres](#les-balises-de-titres)
+- [Lien hypertexte](#lien-hypertexte)
+  - [Faire un lien interne à la page](#faire-un-lien-interne-à-la-page)
+- [Les commentaires](#les-commentaires)
+- [Les images](#les-images)
+- [Les chemins relatifs et absolus](#les-chemins-relatifs-et-absolus)
+  - [Chemin absolu](#chemin-absolu)
+  - [Chemin relatif](#chemin-relatif)
+
 ## Introduction
 
 **HTML** = HyperText Markup Language
