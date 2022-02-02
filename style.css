@@ -1,0 +1,7 @@
+/* Sélecteur : nom de la balise HTML */
+h1 {
+  /* Règle CSS me permettant de définir la couleur du texte */
+  color: white;
+  /* Couleur Arrière-plan */
+  background-color: #444;
+}
