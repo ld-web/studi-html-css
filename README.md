@@ -23,6 +23,7 @@
 ## Introduction
 
 **HTML** = HyperText Markup Language
+**CSS** = Cascading Style Sheet
 
 ### La communication client / serveur
 
@@ -320,3 +321,161 @@ Ensuite, si j'ai dans le même répertoire un dossier `img/`, comme c'est notre 
 ```
 
 Alors, lorsqu'on va afficher la page, le navigateur va **résoudre** automatiquement le chemin en partant de notre répertoire courant. Pour ce faire, il prend en compte le fichier que nous sommes en train de consulter, et résout le chemin vers l'image.
+
+> Les chemins relatifs sont donc _généralement_ à privilégier : ce sera plus utile pour déployer une maquette en ligne, car elle pourra fonctionner de la même façon que votre version locale
+
+## `div` : la balise de division de contenu
+
+Nous avons déjà vu ensemble quelques balises et leur utilité. En réalité, il existe une autre balise à vocation plus généraliste : la balise `div`.
+
+Elle va vous permettre de déclarer des conteneurs (c'est une balise double), mais sans leur donner une signification particulière dans le code HTML. En gros, si vous n'avez pas besoin d'un titre, d'un paragraphe, d'un lien, etc...mais que vous avez quand même besoin d'occuper un espace, pour un contenu, alors vous pouvez utiliser une div.
+
+La syntaxe est très simple, comme une balise double :
+
+```html
+<div>
+  <!-- Mon contenu -->
+</div>
+```
+
+> Pourquoi on parle de cette balise qui semble ne servir à rien, au premier abord ? Parce qu'en réalité, c'est l'une des balises les plus utilisées sur le web
+
+## Les types de balises
+
+Nous allons voir ensemble les 2 types principaux de balises HTML, et leur différence fondamentale. Nous avons déjà vu maintes fois que le fait d'écrire du HTML permettait de parler à un navigateur, qui peut comprendre, interpréter notre code.
+
+Selon les balises qu'on va utiliser, le navigateur va, par défaut, les afficher différemment.
+
+### Les balises block
+
+La caractéristique des balises `block` est qu'elles vont occuper tout l'espace horizontal disponible.
+
+Exemple : h1, h2, h3, h4, h5, h6, div, p...
+
+![h1_block](img/h1_block.png "h1_block")
+
+Ainsi, à l'écran, dans un navigateur, elles vont systématiquement se placer sous la balise précédente, et au-dessus de la balise suivante. Car en occupant tout l'espace horizontal disponible, alors elles repoussent la balise suivante sur une nouvelle ligne.
+
+### Les balises inline
+
+Les balises `inline`, quant à elle, n'occupent que l'espace horizontal nécessaire à leur affichage.
+
+Exemple : a, img...
+
+![a_inline](img/a_inline.png "a_inline")
+
+## CSS
+
+CSS est l'acronyme de **Cascading Style Sheet**.
+
+Nous avons vu ensemble que HTML permettait de définir le **squelette**, ou encore le **corps** de la page. CSS, quant à lui, définit l'habillage, l'apparence des éléments de notre page.
+
+### Syntaxe générale
+
+Comme tout langage, CSS a sa syntaxe.
+
+Globalement, pour appliquer une apparence à un élément de la page, cela se déroulera en 2 temps : on indique un sélecteur, pour pouvoir cibler l'élément qu'on veut styliser, puis on applique des valeurs à des règles (ou propriétés) CSS, entre des accolades.
+
+Exemple :
+
+```css
+h1 { /* <-- Sélecteur : toutes les balises h1 */
+  color: blue; /* <-- Règle : couleur du texte, Valeur : bleu */
+}
+```
+
+> Note : vous constatez qu'on peut également écrire des commentaire en CSS avec la syntaxe `/* ... */`
+
+Chaque règle a un nom et un but bien particulier. Nous pouvons donc déclarer plusieurs règles, les unes à la suite des autres, pour un sélecteur donné. Chaque ligne spécifiant une valeur pour une règle donnée doit être terminée par un point-virgule.
+
+Autre exemple :
+
+Nous parlions plus tôt des types de balises (block, inline). La règle CSS associée à ces valeurs est `display`.
+
+Ainsi, pour un élément donné, qui serait par exemple `inline` par défaut, on peut tout à fait changer sa propriété CSS `display` pour le passer en `block` :
+
+```css
+a { /* <-- a est un élément inline par défaut */
+  display: block;
+}
+```
+
+### Liaison avec un fichier HTML
+
+Lorsque vous avez déclaré un ensemble de règles et les valeurs à associer pour des sélecteurs donnés, vous souhaitez appliquer cette **feuille de styles** à un document HTML.
+
+Pour ce faire, il suffit de vous rendre dans votre document HTML, et d'utiliser une balise `link` dans la partie `head` de votre page :
+
+```html
+<head>
+  <!-- ... -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- ... -->
+</head>
+```
+
+### Couleurs (texte, arrière-plan)
+
+La propriété de couleur de texte en CSS est `color`. Pour la couleur d'arrière-plan, on peut utiliser `background-color`.
+
+Dans les deux cas, ces propriétés attendent une valeur représentant une couleur, afin que le navigateur puisse l'appliquer sur l'élément cible.
+
+En CSS, on peut représenter une couleur de façons différentes.
+
+#### Un nom
+
+On peut spécifier une couleur avec un nom : `white`, `blue`, `yellow`, ...
+
+#### RGB
+
+RGB est l'acronyme de **Red, Green, Blue**. Quand vous définissez une couleur en RGB, vous définissez la quantité de bleu, vert et rouge que vous allez inclure dans votre couleur finale. Cela va nous permettre de définir des couleurs plus fines que `blue`, si vous voulez un bleu un peu plus clair par exemple.
+
+![rgb](img/rgb.png "rgb")
+
+#### RGBA
+
+RGBA ajoute une notion de transparence dans la couleur, avec un paramètre supplémentaire (alpha).
+
+![rgba](img/rgba.png "rgba")
+
+#### HEX
+
+Vous pouvez également spécifier une valeur en **hexadécimal**. Dans ce cas, vous allez utiliser une base 16 et non plus une base 10.
+
+La base 10 permet de compter de 0 jusqu'à 9, puis de 10 jusqu'à 19, etc...10 par 10.
+
+En base 16, on va compter de 0 jusqu'à 9, puis de A jusqu'à F :
+
+|Base 16  |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |A  |B  |C  |D  |E  |F  |
+|---------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Base 10  |0  |1  |2  |3  |4  |5  |6  |7  |8  |9  |10 |11 |12 |13 |14 |15 |
+
+![hex](img/hex.png "hex")
+
+Une couleur en hexadécimal est représentée sur 6 caractères. En réalité, si on divise par 3, alors on peut retrouver notre RVB (ou RGB en anglais).
+
+Dans l'image ci-dessus, nous avons la valeur `#5f5fff`. Il s'agit de la représentation hexadécimale de notre précédent exemple en RGB.
+
+Prenons les 2 premiers caractères, `5f`. Il doit s'agir, logiquement, de la quantité de R, donc rouge, dans notre couleur.
+
+Dans la représentation RGB, nous avions `95` pour le rouge, donc en base 10.
+
+Si nous comptons, à la place, en base 16, alors logiquement nous devrions avoir le tableau de comparaison base 10 et base 16 ci-dessus, de 0 jusqu'à 15, puis, 16 en base 10 équivaut donc à 10 en base 16.
+
+Donc si nous allons de 16 en 16 :
+
+|Base 10  |16 |...|32 |...|48 |...|64 |...|80 |
+|---------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Base 16  |10 |...|20 |...|30 |...|40 |...|50 |
+
+Puis :
+
+|Base 10  |81 |82 |83 |84 |85 |86 |87 |88 |89 |90 |91 |92 |93 |94 |95 |
+|---------|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|Base 16  |51 |52 |53 |54 |55 |56 |57 |55 |59 |5A |5B |5C |5D |5E |5F |
+
+On retrouve donc bien l'équivalent `5F` en base 16, pour la valeur `95` qu'on trouvait en base 10 dans notre couleur représentée en RGB initialement.
+
+La couleur noire sera donc `#000000` et la couleur blanche `#FFFFFF`.
+
+> Note : On peut raccourcir la représentation hexadécimale si les caractères sont les mêmes : `#000000` peut être `#000`, `#FFFFFF` sera `#FFF`, `#FF0000` devient `#F00`, etc...
