@@ -19,6 +19,18 @@
 - [Les chemins relatifs et absolus](#les-chemins-relatifs-et-absolus)
   - [Chemin absolu](#chemin-absolu)
   - [Chemin relatif](#chemin-relatif)
+- [div : la balise de division de contenu](#div--la-balise-de-division-de-contenu)
+- [Les types de balises](#les-types-de-balises)
+  - [Les balises block](#les-balises-block)
+  - [Les balises inline](#les-balises-inline)
+- [CSS](#css)
+  - [Syntaxe générale](#syntaxe-générale)
+  - [Liaison avec un fichier HTML](#liaison-avec-un-fichier-html)
+  - [Couleurs (texte, arrière-plan)](#couleurs-texte-arrière-plan)
+    - [Un nom](#un-nom)
+    - [RGB](#rgb)
+    - [RGBA](#rgba)
+    - [HEX](#hex)
 
 ## Introduction
 
