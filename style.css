@@ -1,7 +1,28 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Sélecteur : nom de la balise HTML */
 h1 {
   /* Règle CSS me permettant de définir la couleur du texte */
   color: white;
   /* Couleur Arrière-plan */
   background-color: #444;
+}
+
+p {
+  color: #6b8aaa;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+}
+
+#contact {
+  background-color: darkred;
+  color: #ddd;
 }
