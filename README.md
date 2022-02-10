@@ -491,3 +491,71 @@ On retrouve donc bien l'équivalent `5F` en base 16, pour la valeur `95` qu'on t
 La couleur noire sera donc `#000000` et la couleur blanche `#FFFFFF`.
 
 > Note : On peut raccourcir la représentation hexadécimale si les caractères sont les mêmes : `#000000` peut être `#000`, `#FFFFFF` sera `#FFF`, `#FF0000` devient `#F00`, etc...
+
+### Les sélecteurs
+
+Les sélecteurs CSS nous permettent de cibler, dans le fichier HTML où notre fichier CSS sera inclus, des éléments précis de l'arborescence.
+
+Pour chacun des éléments correspondants, le navigateur appliquera l'ensemble des règles CSS indiquées.
+
+|Sélecteur|Syntaxe (exemple)|Description (ce qui est sélectionné)|
+|---|---|---|
+|Balise HTML| p {} | Toutes les balises HTML correspondant au nom indiqué|
+|Classe| .nomDuneClasse {} | Toutes les balises HTML ayant un attribut `class` contenant le nom indiqué|
+|Identifiant| #identifiant {} | Toutes les balises HTML ayant un attribut `id` correspondant au nom indiqué|
+
+> Je rajouterai dans ce tableau les sélecteurs que nous aurons découverts au cours de notre apprentissage
+
+### La différence entre une classe et un id
+
+Pour n'importe quelle balise dans notre `body`, nous pouvons spécifier un identifiant ou bien une classe.
+
+#### id
+
+Un identifiant peut servir à plusieurs choses :
+
+- Mettre un repère dans une page pour faire un lien vers celle-ci (voir la section sur les liens)
+- Pouvoir désigner un élément de formulaire quand on veut lui associer un libellé (nous verrons ça plus tard avec les formulaires)
+- Pouvoir récupérer un élément de la page avec du Javascript
+
+Dans ces 3 exemples, une caractéristique qui ressort, et qui doit être respectée, est **l'unicité** du nom.
+
+Un identifiant, dans une page, doit être unique. On ne donnera donc pas le même identifiant à 2 balises HTML différentes.
+
+#### Classe
+
+Une classe peut être vue, du point de vue CSS, comme une _classe d'affichage_.
+
+Par exemple, nous avons défini une classe `.important` dans notre CSS, car nous souhaitions pouvoir afficher en gras le ou les textes que nous jugeons importants.
+
+Contrairement à l'identifiant, le nom de classe peut donc être **réutilisé** dans une même page, sur plusieurs balises.
+
+Par ailleurs, il est possible de **cumuler** plusieurs classes sur une balise. Voir pour ça l'exemple de notre texte important que nous avons passé en rouge :
+
+Dans notre CSS :
+
+```css
+p {
+  color: #6b8aaa;
+}
+
+.important {
+  font-weight: bold;
+}
+
+.red {
+  color: red;
+}
+```
+
+Et notre HTML :
+
+```html
+<p class="important red">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, quidem
+  voluptatem? Obcaecati a distinctio ullam quisquam?
+  <!-- ... -->
+</p>
+```
+
+> Ci-dessus, on définit que les balises `p` doivent être colorées avec le code couleur `#6b8aaa`, mais nous indiquons ensuite que les éléments portant la classe `red` doivent être colorés en rouge. A l'écran, dans le navigateur, le texte est affiché en rouge : la règle déclarée dans la classe `red` a pris le dessus. Si on voulait que la règle déclarée dans la balise `p` garde le dessus, on pourrait utiliser `!important` : `color: #6b8aaa !important;`. Mais c'est une pratique dont il ne faut pas abuser, au risque de perdre en cohérence
