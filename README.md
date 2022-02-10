@@ -31,6 +31,10 @@
     - [RGB](#rgb)
     - [RGBA](#rgba)
     - [HEX](#hex)
+  - [Les sélecteurs](#les-sélecteurs)
+  - [La différence entre une classe et un id](#la-différence-entre-une-classe-et-un-id)
+    - [id](#id)
+    - [Classe](#classe)
 
 ## Introduction
 
