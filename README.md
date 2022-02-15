@@ -507,6 +507,8 @@ Pour chacun des éléments correspondants, le navigateur appliquera l'ensemble d
 |Balise HTML| p {} | Toutes les balises HTML correspondant au nom indiqué|
 |Classe| .nomDuneClasse {} | Toutes les balises HTML ayant un attribut `class` contenant le nom indiqué|
 |Identifiant| #identifiant {} | Toutes les balises HTML ayant un attribut `id` correspondant au nom indiqué|
+|sélecteur dans sélecteur|nav ul {}| Ici par exemple, toutes les balises `ul` qui se trouvent à l'intérieur d'une balise `nav` (un espace pour séparer)|
+|enfant direct|nav > ul {}| Ici par exemple, toutes les balises `ul` qui se trouvent à l'intérieur d'une balise `nav`, mais qui en sont les **enfants directs**, donc qui se trouvent juste en-dessous, à un niveau d'indentation supplémentaire seulement|
 
 > Je rajouterai dans ce tableau les sélecteurs que nous aurons découverts au cours de notre apprentissage
 
@@ -563,3 +565,147 @@ Et notre HTML :
 ```
 
 > Ci-dessus, on définit que les balises `p` doivent être colorées avec le code couleur `#6b8aaa`, mais nous indiquons ensuite que les éléments portant la classe `red` doivent être colorés en rouge. A l'écran, dans le navigateur, le texte est affiché en rouge : la règle déclarée dans la classe `red` a pris le dessus. Si on voulait que la règle déclarée dans la balise `p` garde le dessus, on pourrait utiliser `!important` : `color: #6b8aaa !important;`. Mais c'est une pratique dont il ne faut pas abuser, au risque de perdre en cohérence
+
+### Les balises HTML : des boîtes
+
+Chaque balise HTML interprétée et affichée par le navigateur est en fait comme une **boîte**.
+
+Elle va avoir un contenu, des bordures, etc...
+
+Sa structure peut être visible dans l'inspecteur d'éléments, dans la partie CSS :
+
+![html_box](img/html_box.png "html_box")
+
+Depuis l'intérieur vers l'extérieur :
+
+- Contenu de la balise : c'est là-dedans que s'affichera le texte, les images, etc...
+- **padding** : marge intérieure de l'élément, entre le contenu et la bordure
+- **border** : bordures de l'élément
+- **margin** : marge extérieure de l'élément
+
+> Les 3 mots en gras sont des termes à retenir. En HTML, si on parle de _margin_, alors on parle de la marge **extérieure**, et inversement pour le _padding_
+
+Chacun de ces nouveaux termes peut être décliné sur chaque côté de l'élément. Ainsi, on pourra définir une marge extérieure supérieure sur un élément en utilisant la règle `margin-top`, ou bien une bordure inférieure avec `border-bottom`.
+
+Si on utilise `margin: 15px;`, alors on définit une marge extérieure de 15 pixels pour les 4 côtés de l'élément en même temps.
+
+> Sur la capture d'écran ci-dessus, on voit que l'élément a une marge extérieure de 8 pixels. En fait, l'élément en question est le `body`. Le navigateur applique par défaut une marge extérieure de 8 pixels sur cet élément
+
+### Les unités de mesure
+
+Quand on veut définir une règle sur un élément, comme une marge ou une bordure, on peut indiquer l'épaisseur voulue, ou la largeur par exemple avec la règle CSS `width`.
+
+Dans ce cas, on va utiliser une unité de mesure pour indiquer au navigateur comment afficher l'élément et appliquer la règle.
+
+#### px : Pixels
+
+L'unité de mesure en pixels est très précise.
+
+Par exemple, si je souhaite appliquer une bordure sur un élément, je peux utiliser la règle `border` :
+
+```css
+/* Bordure de 2px de large, en ligne pleine, de couleur noire */
+border: 2px solid black;
+```
+
+Le désavantage de cette règle, cependant, est qu'il s'agit d'une unité de mesure **absolue**. 2 pixels, c'est 2 pixels, et ça ne bougera pas. Ainsi, notre layout (disposition de notre page) n'est pas très **flexible**. Donc c'est précis, mais moins flexible que des unités de mesure **relatives**.
+
+#### em & rem
+
+Comme vu précédemment, si on veut définir une bordure par exemple, on peut tout à fait utiliser une valeur absolue. L'unité de mesure en pixels est loin d'être inutile.
+
+En revanche, si on souhaite dimensionner un texte par exemple, nous aurons probablement plus besoin d'une unité de mesure **relative**.
+
+Alors, relative à quoi ? Regardons un exemple.
+
+Quand j'utilise une balise `h1`, le navigateur applique un style par défaut :
+
+```css
+h1 {
+  display: block;
+  font-size: 2em; /* <-- Taille du texte, unité de mesure en 'em' */
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+```
+
+L'utilisation de l'unité `em` permet ici de dire au navigateur "applique une taille de texte 2 fois plus grande que la première taille de texte que tu trouveras plus haut dans l'arborescence".
+
+> Généralement, l'élément `h1` se trouve assez haut dans l'arborescence, donc on va souvent hériter de la taille de texte définie sur le `body` par exemple (par défaut : 16px)
+
+Donc par défaut, notre `h1` possèderait une taille de police de 32px, dans ce cas.
+
+Maintenant, si je souhaite appliquer, par exemple, un `margin` sur mon `h1`, je peux utiliser une taille relative également :
+
+```css
+h1 {
+  margin: 3em;
+}
+```
+
+Or, dans ce cas, la marge appliquée par le navigateur sera de **96px**. C'est en fait 3 fois la `font-size` appliquée sur notre `h1` !
+
+Si on veut conserver une taille relative à la taille **de base**, alors on doit utiliser `rem` comme unité de mesure. On indique ainsi au navigateur d'utiliser le **root em**, donc de se référer à la racine.
+
+```css
+h1 {
+  margin: 3rem;
+}
+```
+
+Avec l'unité `rem`, on aura bien une marge de **48px**, soit 16px x 3.
+
+Ainsi, on peut donc décider, par la suite, de faire évoluer notre taille de police de base. L'élément racine étant `html`, on peut tout à fait décider que la taille de police de base n'est plus 16px mais 20px :
+
+```css
+html {
+  font-size: 20px;
+}
+```
+
+Alors, dans ce cas, toutes les règles que nous avons définies comme relatives suivront : notre layout est plus flexible.
+
+#### % : le pourcentage
+
+On peut également utiliser le pourcentage comme unité de mesure relative.
+
+Par exemple, pour définir la largeur d'un conteneur :
+
+```css
+.monConteneur {
+  width: 50%;
+}
+```
+
+Alors, relativement à son **parent**, il devrait occuper 50% de l'espace.
+
+### Le positionnement
+
+Du point de vue du navigateur, chaque élément a un **positionnement** (en CSS, règle : `position`).
+
+Le positionnement par défaut est `static`. Suivant le type de l'élément (`block` ou `inline`), le navigateur le positionne à la suite des autres, sans adaptation particulière.
+
+Les principaux positionnements utilisés sont :
+
+- relative
+- absolute
+- fixed
+- sticky
+
+#### Une navigation collée en haut de l'écran (sticky)
+
+Dans l'exemple `navigation.html`, on réalise une barre de navigation collée en haut de l'écran quand on scrolle.
+
+Pour ce faire, on va appliquer à notre balise `nav` un positionnement `sticky`, et indiquer au navigateur ou positionner l'élément :
+
+```css
+nav {
+  position: sticky;
+  top: 0px;
+}
+```
+
+La règle `top` va simplement indiquer au navigateur où positionner l'élément. Relativement au haut (`top` en anglais) de la fenêtre, on le mettra à 0px. Donc collé, tout en haut.
