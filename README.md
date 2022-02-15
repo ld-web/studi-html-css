@@ -35,6 +35,13 @@
   - [La différence entre une classe et un id](#la-différence-entre-une-classe-et-un-id)
     - [id](#id)
     - [Classe](#classe)
+  - [Les balises HTML : des boîtes](#les-balises-html--des-boîtes)
+  - [Les unités de mesure](#les-unités-de-mesure)
+    - [px : Pixels](#px--pixels)
+    - [em & rem](#em--rem)
+    - [% : le pourcentage](#--le-pourcentage)
+  - [Le positionnement](#le-positionnement)
+    - [Une navigation collée en haut de l'écran (sticky)](#une-navigation-collée-en-haut-de-lécran-sticky)
 
 ## Introduction
 
