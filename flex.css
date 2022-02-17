@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Container : donc je définis flexbox là-dessus, ainsi que l'espacement entre les enfants */
+.container {
+  height: 100vh; /* vh = viewport height */
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.container > div {
+  padding: 2em;
+  background-color: #555;
+  color: white;
+}
+
+.container > div:nth-of-type(even) {
+  background-color: rgb(255, 90, 117);
+}

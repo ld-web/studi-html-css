@@ -18,6 +18,10 @@ nav {
 
 nav ul {
   list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 3em;
 }
 
 nav ul li {
@@ -29,6 +33,6 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li:not(:last-child) {
+/* nav ul li:not(:last-child) {
   margin-right: 2em;
-}
+} */
