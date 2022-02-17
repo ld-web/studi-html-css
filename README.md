@@ -32,6 +32,7 @@
     - [RGBA](#rgba)
     - [HEX](#hex)
   - [Les sélecteurs](#les-sélecteurs)
+    - [Les pseudo-classes](#les-pseudo-classes)
   - [La différence entre une classe et un id](#la-différence-entre-une-classe-et-un-id)
     - [id](#id)
     - [Classe](#classe)
@@ -40,8 +41,11 @@
     - [px : Pixels](#px--pixels)
     - [em & rem](#em--rem)
     - [% : le pourcentage](#--le-pourcentage)
+    - [vw & vh : Viewport width & Viewport height](#vw--vh--viewport-width--viewport-height)
   - [Le positionnement](#le-positionnement)
     - [Une navigation collée en haut de l'écran (sticky)](#une-navigation-collée-en-haut-de-lécran-sticky)
+  - [Le modèle Flexbox](#le-modèle-flexbox)
+    - [Le conteneur](#le-conteneur)
 
 ## Introduction
 
