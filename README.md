@@ -519,6 +519,16 @@ Pour chacun des éléments correspondants, le navigateur appliquera l'ensemble d
 
 > Je rajouterai dans ce tableau les sélecteurs que nous aurons découverts au cours de notre apprentissage
 
+#### Les pseudo-classes
+
+Les pseudo-classes s'appliquent sur des sélecteurs CSS : on ajoute `:` puis le nom de la pseudo-classe. Cela nous permettra, pour un sélecteur donné, de cibler un sous-ensemble des éléments correspondants par exemple, ou bien un état précis de l'élément (souris qui passe dessus, clic, ...)
+
+|Sélecteur|Syntaxe (exemple)|Description (ce qui est sélectionné)|
+|---|---|---|
+|N'est pas| :not() | élément qui n'est pas ce qui est indiqué entre parenthèses|
+|Dernier enfant| :last-child| Au sein de plusieurs enfants, cibler le dernier de leur parent|
+|nth-of-type|.container > div:nth-of-type(even)| Dans l'exemple ci-contre, sélectionne tous les éléments se trouvant aux positions paires qui sont des `div` se trouvant être les enfants directs d'un élément portant la classe `container`|
+
 ### La différence entre une classe et un id
 
 Pour n'importe quelle balise dans notre `body`, nous pouvons spécifier un identifiant ou bien une classe.
@@ -689,6 +699,10 @@ Par exemple, pour définir la largeur d'un conteneur :
 
 Alors, relativement à son **parent**, il devrait occuper 50% de l'espace.
 
+#### vw & vh : Viewport width & Viewport height
+
+`vw` et `vh` permettent d'indiquer la largeur ou la hauteur d'un élément par rapport au **viewport** : la zone affichée à l'écran. Elle agit comme un pourcentage (`100vh` = 100% de la hauteur de la zone affichée à l'écran).
+
 ### Le positionnement
 
 Du point de vue du navigateur, chaque élément a un **positionnement** (en CSS, règle : `position`).
@@ -716,3 +730,57 @@ nav {
 ```
 
 La règle `top` va simplement indiquer au navigateur où positionner l'élément. Relativement au haut (`top` en anglais) de la fenêtre, on le mettra à 0px. Donc collé, tout en haut.
+
+### Le modèle Flexbox
+
+Nous avons vu que les éléments HTML pouvaient être de type `block` ou `inline`.
+
+La règle CSS correspondant à ce type d'affichage est `display`.
+
+On peut également utiliser `display` pour d'autres types d'affichages. Nous allons parler du type `flex`.
+
+Le modèle Flexbox permet, quand il est appliqué sur un conteneur, d'indiquer au navigateur comment distribuer les éléments qui se trouvent dans ce conteneur.
+
+On va donc pouvoir distributer les enfants d'un conteneur de manière beaucoup plus aisée grâce aux règles CSS utilisables soit sur le conteneur, soit sur les enfants.
+
+#### Le conteneur
+
+Au niveau du conteneur, on va dire au navigateur qu'on souhaite appliquer Flexbox avec `display: flex;`.
+
+Quand on applique cette règle sur un conteneur, alors le navigateur, par défaut, va distribuer les enfants de ce conteneur sur un **axe principal** : horizontal (ou `row`).
+
+Il est possible d'indiquer au navigateur d'utiliser l'axe vertical comme axe principal avec la règle `flex-direction: column`.
+
+Par la suite, il est donc possible d'indiquer au navigateur comment aligner les enfants sur l'axe principal, mais également sur l'**axe secondaire**.
+
+> Donc, si par défaut, l'axe principal est `row`, donc l'axe horizontal, alors l'axe secondaire sera l'axe vertical, et l'inverse avec `flex-direction: column`
+
+Pour aligner les enfants sur l'axe principal, on utilisera la règle `justify-content` **toujours au niveau du conteneur** :
+
+```css
+/* Pour distribuer les éléments d'une liste par exemple */
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+```
+
+On utilisera généralement `flex-start`, `flex-end`, `space-around`, `space-between`, `space-evenly`, `center` comme valeurs de cette règle.
+
+Au niveau de l'axe secondaire, on pourra utiliser `align-items` ou `align-content`.
+
+`align-items` va nous permettre d'aligner les **éléments**, au sein d'une ligne, par rapport à l'axe secondaire.
+
+La différence avec `align-content` concerne les lignes. `align-content` n'aura aucun effet sur une ligne seule. Elle aura un effet sur l'alignement de **plusieurs lignes** par rapport à l'axe secondaire.
+
+##### align-items sur une ligne
+
+![flex_one_line_align_items_center](img/flex_one_line_align_items_center.png "flex_one_line_align_items_center")
+
+##### align-items sur plusieurs lignes
+
+![flex_multi_line_align_items_center](img/flex_multi_line_align_items_center.png "flex_multi_line_align_items_center")
+
+##### align-content sur plusieurs lignes
+
+![flex_multi_line_align_content_center](img/flex_multi_line_align_content_center.png "flex_multi_line_align_content_center")
