@@ -788,3 +788,68 @@ La différence avec `align-content` concerne les lignes. `align-content` n'aura 
 ##### align-content sur plusieurs lignes
 
 ![flex_multi_line_align_content_center](img/flex_multi_line_align_content_center.png "flex_multi_line_align_content_center")
+
+#### Les enfants
+
+Les règles CSS précédemment vues s'appliquent sur le **conteneur**.
+
+Les éléments contenus dans ce conteneur, donc les enfants, peuvent également recevoir des règles CSS.
+
+Par exemple, dans le fichier `img_gallery.css`, on réalise une galerie d'images avec Flexbox :
+
+![flex_img_gallery](img/flex_img_gallery.png "flex_img_gallery")
+
+On peut indiquer au navigateur d'autoriser les enfants à s'élargir si besoin avec la règle `flex-grow`, à appliquer au niveau des enfants.
+
+Par défaut, `flex-grow` est à 0, donc si nous ne l'appliquions pas sur notre galerie, les images ne prendraient pas toute la largeur disponible.
+
+Les 3 règles principalement utilisées sur les enfants permettent de fixer une valeur de base, la possibilité de s'élargir et la possibilité de se rétrécir.
+
+- `flex-grow` : possibilité de s'élargir (par défaut : 0, donc pas possible)
+- `flex-shrink` : possibilité de rétrécir l'élément (par défaut : 1)
+- `flex-basis` : largeur de base pour ensuite déterminer la largeur finale (par défaut : auto)
+
+Il est également possible d'utiliser la règle `flex` sur les enfants, comme un raccourci de `flex-grow`, `flex-shrink` et `flex-basis` :
+
+```css
+element {
+  /* --- Premier exemple --- */
+  flex: 1;
+  /*
+  Equivaut à :
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  */
+  /* --- Second exemple --- */
+  flex: 1 0;
+  /*
+  Equivaut à :
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 0%;
+  */
+  /* --- Troisième exemple --- */
+  flex: 1 auto;
+  /*
+  Equivaut à :
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  */
+  /* --- Quatrième exemple --- */
+  flex: 1 0 auto;
+  /*
+  Equivaut à :
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  */
+}
+```
+
+### Le ratio des images
+
+Dans la galerie d'images `img_gallery.html`, pour éviter que les images soient déformées, on applique la règle CSS `object-fit` avec la valeur `cover`.
+
+Ainsi, il est possible que l'image soit légèrement rognée sur les bords mais le ratio reste correct.
