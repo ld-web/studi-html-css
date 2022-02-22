@@ -46,6 +46,8 @@
     - [Une navigation collée en haut de l'écran (sticky)](#une-navigation-collée-en-haut-de-lécran-sticky)
   - [Le modèle Flexbox](#le-modèle-flexbox)
     - [Le conteneur](#le-conteneur)
+    - [Les enfants](#les-enfants)
+  - [Le ratio des images](#le-ratio-des-images)
 
 ## Introduction
 
