@@ -855,3 +855,87 @@ element {
 Dans la galerie d'images `img_gallery.html`, pour éviter que les images soient déformées, on applique la règle CSS `object-fit` avec la valeur `cover`.
 
 Ainsi, il est possible que l'image soit légèrement rognée sur les bords mais le ratio reste correct.
+
+## Formulaires : introduction
+
+Un formulaire aura toujours pour balise racine la balise `form` :
+
+```html
+<form>
+  <!-- ... -->
+</form>
+```
+
+Une fois qu'on a ouvert notre formulaire, on va ajouter des champs dedans :
+
+```html
+<!-- Exemple de formulaire de recherche -->
+<form>
+  <input type="text" name="search" />
+  <input type="submit" value="Rechercher" />
+</form>
+```
+
+>Les balises `input` sont auto-fermantes
+
+La balise `input` peut recevoir de nombreux types, entre autres : `text`, `email`, `password`, `number`...
+
+### Les labels
+
+Il est possible d'accompagner un champ d'un **texte descriptif**. Par ailleurs, le clic sur le texte descriptif peut provoquer le **focus** sur le champ de formulaire associé : le curseur va se placer directement dans le champ.
+
+Un texte descriptif peut être placé dans la page avec la balise double `label` :
+
+```html
+<label for="login">Login :</label>
+<input
+  type="text"
+  id="login"
+  name="login"
+/>
+```
+
+Dans ce cas, on voit que pour pouvoir cibler un élément de formulaire, il faut pouvoir **l'identifier**, d'où l'utilisation de l'attribut `id` dans l'input.
+
+> Rappelez-vous qu'un identifiant doit être unique !
+
+### La validation
+
+On peut également ajouter dans les différentes balises de formulaire des attributs de validation : indiquer qu'un champ doit être renseigné obligatoirement, ou bien qu'il doit avoir un format d'email, ou des limites inférieures et supérieures, etc...
+
+Exemples :
+
+```html
+<!-- Champ requis : attribut "required" -->
+<input
+  type="text"
+  id="login"
+  name="login"
+  placeholder="Login..."
+  required
+/>
+
+<!-- Bornes inférieure et supérieure : champs "min" et "max" -->
+<input
+  type="number"
+  id="quantity"
+  name="quantity"
+  min="0"
+  max="5"
+/>
+
+<!-- Champ au format email + obligatoire -->
+<input
+  type="email"
+  id="email"
+  name="email"
+  placeholder="Email..."
+  required
+/>
+```
+
+Attention, la validation côté HTML, donc côté client, doit **toujours** être complétée par une validation côté serveur.
+
+En effet, n'importe qui disposant d'une page web affichée dans son navigateur peut en modifier la source pour enlever ou modifier les contraintes de validation. Ainsi, il faut davantage considérer la validation côté client comme un **confort d'utilisation** pour l'utilisateur final : on peut le prévenir que l'email a un format invalide par exemple, afin d'empêcher la soumission du formulaire et avoir une saisie erronée par exemple.
+
+> Prévoyez toujours une validation côté client et une validation côté serveur
