@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="form.css" />
+    <title>Formulaire</title>
+  </head>
+  <body>
+    <h1>Identification</h1>
+    <form>
+      <div>
+        <label for="login">Login :</label>
+        <input
+          type="text"
+          id="login"
+          name="login"
+          placeholder="Login..."
+          required
+        />
+      </div>
+      <div>
+        <label for="password">Mot de passe :</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Mot de passe..."
+          required
+        />
+      </div>
+      <div>
+        <select name="postal_code" id="postal_code">
+          <option value="69001">Lyon 1er</option>
+          <option value="69002">Lyon 2ème</option>
+          <option value="69003">Lyon 3ème</option>
+        </select>
+      </div>
+      <div>
+        <!-- <input type="submit" value="S'inscrire" /> -->
+        <button type="submit">
+          <i class="fas fa-arrow-right"></i>
+          S'inscrire
+        </button>
+      </div>
+    </form>
+  </body>
+</html>

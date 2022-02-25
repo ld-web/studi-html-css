@@ -1,0 +1,18 @@
+input {
+  padding: 0.5em;
+  outline: none;
+}
+
+form > div {
+  margin-top: 1em;
+}
+
+button {
+  padding: 0.5em 1em;
+  background-color: rgb(35, 200, 35);
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  border-radius: 6px;
+}
