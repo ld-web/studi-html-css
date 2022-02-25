@@ -48,6 +48,9 @@
     - [Le conteneur](#le-conteneur)
     - [Les enfants](#les-enfants)
   - [Le ratio des images](#le-ratio-des-images)
+- [Formulaires : introduction](#formulaires--introduction)
+  - [Les labels](#les-labels)
+  - [La validation](#la-validation)
 
 ## Introduction
 
